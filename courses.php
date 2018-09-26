@@ -3,6 +3,39 @@ ob_start();
 session_start();
 include_once 'login and registration form\dbconnect.php';
 
+
+$id = $_GET['id'];
+
+$about_link = "about.php?id=".$id;
+$contact_link = "contact.php?id=".$id;
+$courses_link = "courses.php?id=".$id;
+$education_link = "education.php?id=".$id;
+$publication_link = "publication.php?id=".$id;
+$research_link = "research.php?id=".$id;
+
+// Basic Information
+
+$sql = "SELECT * FROM `teacher` WHERE t_id='".$id."'";
+$basic_info = mysqli_query($connection, $sql);
+$row = mysqli_fetch_array($basic_info);
+
+
+
+$designation = $row['designation'];
+$name = $row['name'];
+$email = $row['email'];
+$photo = $row['photo'];
+$about = $row['about'];
+$designation = $row['designation'];
+$phone = $row['phone'];
+$discipline = $row['discipline'];
+$inst = $row['inst'];
+
+// Course Information
+
+$sql_course = "SELECT * FROM `course` WHERE t_id='".$id."'";
+$result = mysqli_query($connection, $sql_course);
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +49,7 @@ include_once 'login and registration form\dbconnect.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Md Zahidul Islam</title>
+    <title><?php echo $name ?></title>
     <link rel="shortcut icon" href="logo.gif" type="image/gif">
 
     <!-- Bootstrap Core CSS -->
@@ -42,28 +75,28 @@ include_once 'login and registration form\dbconnect.php';
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                <img src="zahid.png">
+                <img src="<?php echo $photo; ?>">
                     <a class="info">                        
-                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush ">Md. Zahidul Islam</strong><br>Assistant Professor<br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
+                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush "><?php echo $name; ?></strong><br><?php echo $designation ?><br><?php echo $discipline; ?><br><?php echo $inst; ?><br>Email: <?php echo $email ;?><br>Phone: <?php echo $phone ;?></H5>
                     </a>
                 </li>
                 <li>
-                    <a href="about.php">About</a>
+                    <a href="<?php echo $about_link; ?>">About</a>
                 </li>
                 <li>
-                    <a href="education.php">Education</a>
+                    <a href="<?php echo $education_link; ?>">Education</a>
                 </li>
                 <li>
-                    <a href="research.php">Research Interest</a>
+                    <a href="<?php echo $research_link; ?>">Research Interest</a>
                 </li>
                 <li>
-                    <a href="publication.php">Publication</a>
+                    <a href="<?php echo $publication_link; ?>">Publication</a>
                 </li>
                 <li>
-                    <a href="courses.php">Courses</a>
+                    <a href="<?php echo $courses_link; ?>">Courses</a>
                 </li>
                 <li>
-                    <a href="contact.php">Contact</a>
+                    <a href="<?php echo $contact_link; ?>">Contact</a>
                 </li>
                 <?php if (isset($_SESSION['usr_id'])) { ?>        
                 <li class="uName" style="color:LavenderBlush "><a style="text-transform: uppercase;" >Logged in as <?php echo $_SESSION['usr_name']; ?></a></li>
@@ -75,6 +108,7 @@ include_once 'login and registration form\dbconnect.php';
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">

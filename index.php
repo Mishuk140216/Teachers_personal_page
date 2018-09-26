@@ -3,111 +3,337 @@ ob_start();
 session_start();
 include_once 'login and registration form\dbconnect.php';
 
+$sql = "SELECT * FROM `teacher` WHERE 1";
+$basic_info = mysqli_query($connection, $sql);
+
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WieldStrem University</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
 
-    <title>Teacher Personal Page</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+<script type='text/javascript' src="js/custom.js"></script>
 
 </head>
 
+
 <body>
 
-    <div id="wrapper">
+<!--Wrapper Start-->
+<div id="wrapper">
+<div id="page">
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                <img src="zahid.png">
-                    <a class="info">                        
-                       <H5><br><strong style="text-transform: uppercase; color:LavenderBlush ">Md. Zahidul Islam</strong><br>Assistant Professor<br>Computer Science &amp; Engineering Discipline<br>Khulna University<br>Khulna</H5>
-                    </a>
-                </li>
-                <li>
-                    <a href="about.php">About</a>
-                </li>
-                <li>
-                    <a href="education.php">Education</a>
-                </li>
-                <li>
-                    <a href="research.php">Research Interest</a>
-                </li>
-                <li>
-                    <a href="publication.php">Publication</a>
-                </li>
-                <li>
-                    <a href="courses.php">Courses</a>
-                </li>
-                <li>
-                    <a href="contact.php">Contact</a>
-                </li>
-                <?php if (isset($_SESSION['usr_id'])) { ?>        
-                <li class="uName" style="color:LavenderBlush "><a style="text-transform: uppercase;" >Logged in as <?php echo $_SESSION['usr_name']; ?></a></li>
-                <li class="menu-item"><a href="login and registration form\logout.php">Log Out</a></li>   
-                <?php } else { ?>
-                <li class="SignIn"><a href="login and registration form\login.php">Login</a></li>
-                <li class="SignIn"><a href="login and registration form\register.php">Sign Up</a></li>
-                <?php } ?>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+<!--Header Start-->
+<div id="header">
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+<div class="logo-part">
 
-    </div>
-    <!-- /#wrapper -->
+<!--Logo Start-->
+<div class="logo"><a href="index.html" ><img src="images/ku logo.png" style="position:absolute;" width="auto" height="auto" alt=""/>
+<!--Logo End-->
+<h2 style="padding-left:100px; color:white;">COMPUTER SCIENCE &amp; ENGINEERING DISCIPLNE</h2>
+<h4 style="padding-left:100px; color:white;">KHULNA UNIVERSITY</h4>
+</a></div>
+<div class="search-part">
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<div class="search">
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!--Search Start-->
+<div class="search-inner">
+<input name="textfield" type="text" value="Search wieldstrem University" onfocus="if(this.value == 'Search wieldstrem University') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search wieldstrem University'; }" class="search-input-bg" id="textfield"  />
+</div>
+<!--Search End-->
 
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+<!--Social Media Start-->
+<div class="social-media">
+<ul>
+<li> <a href="#"><img src="images/facebook.png" width="27" height="28" alt="" /> </a></li>
+<li> <a href="#"><img src="images/twitter.png" width="27" height="28" alt="" /> </a></li>
+<li> <a href="#"><img src="images/google+.png" width="27" height="28" alt="" /> </a></li>
+<li> <a href="#"><img src="images/youtube.png" width="27" height="28" alt="" /> </a></li>
+<li> <a href="#"><img src="images/dribbble.png" width="27" height="28" alt="" /> </a></li>
+</ul>
+</div>
+<!--Social Media End-->
 
+</div>
+
+<!--Top Menu Start-->
+<div class="top-menu">
+<ul>
+<li><a href="#">A-Z  Site Index</a></li>
+<li><a href="#">Campus Map &amp; Location</a></li>
+<li><a href="#">Directory</a></li>
+<li><a href="#">Blog</a></li>
+<li><a href="#">Help</a></li>
+</ul>
+</div>
+<!--Top Menu End-->
+
+</div>
+
+</div>
+
+
+<!--Menu Start-->
+<div class="menu-part">
+
+
+<div class="menu">
+
+<div class="menu-inner">
+<ul id="main_menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="Academics.html">Academics</a></li>
+<li><a href="Admision.html">Admission</a></li>
+<li><a href="compus-life.html">Campus Life </a></li>
+<li style="background:none; padding-right:0px;"><a href="#">Pages</a>
+<ul>
+<li><a href="location.html">Campus Map &amp; Location</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="blog-details.html">Blog Details</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="course.html">Course</a></li>
+
+
+</ul>
+</li>
+</ul>
+</div>
+
+</div>
+
+<!--Apply Now Part Start-->
+<div class="apply"><a href="#"><img src="images/apply-now-buttion.png" width="280" height="60" alt="" /></a></div>
+<!--Apply Now Part End-->
+
+</div>
+<!--Menu End-->
+
+
+
+
+</div>
+<!--Header End-->
+
+
+
+<!--Content Start-->
+<div id="content">
+
+<div class="inner-part">
+
+<div class="inner-left">
+<h1>OUR TEACHERS</h1>
+
+<div class="campus-part">
+
+<!--Compus Life 1 Start-->
+
+
+	<?php
+		
+        while($row = mysqli_fetch_assoc($basic_info))
+        {        	
+  			echo "<div class='campus-part-list'>";
+            echo "<div class='campus-part-list-image'><img src=".$row['photo']." width='auto' height='175' alt='' ></div>";
+            echo "<div class='campus-part-list-text'>";
+            echo "<h5 id='name'>". $row["name"]."</h5>";
+            echo "<p>". $row["designation"].",<br>". $row["discipline"].",<br>". $row["inst"].",<br>Email: ". $row["email"].",<br>";
+
+            echo "<a href='about.php?id=".$row['t_id']."'>Read More +</a></div></div>";
+        }
+
+    ?>
+
+
+</div>
+
+</div>
+
+<!--Sidebar Part Start-->
+<div class="sidebar">
+
+<div class="sidebar-inner">
+<div class="sidebar-top"><img src="images/sitebar-top.png" width="269" height="20" alt="" /></div>
+<div class="sidebar-center">
+
+<!--Download Part Start-->
+<div class="download"><a href="#"><img src="images/download.png" width="202" height="43" alt="" /></a></div>
+<!--Download Part End-->
+
+
+<!--Campus Event Calender Part Start-->
+<div class="event-cal">
+<h1>Campus Event Calender<img src="images/rss.png" width="17" height="17" alt="" class="rss" /></h1>
+
+<!--Event1 Start-->
+<div class="event-cal-list">
+<div class="event-cal-image"> <span>Sep <br />4</span></div>
+<div class="event-cal-text">
+<h2>The point of using Lorem <span>9:15 am – 5:00 pm</span></h2>
+<p><a href="#">Read more about this event +</a></p>
+</div>
+</div>
+<!--Event1 End-->
+
+<!--Event2 Start-->
+<div class="event-cal-list">
+<div class="event-cal-image"> <span>Sep <br />6</span></div>
+<div class="event-cal-text">
+<h2>The point of using Lorem <span>9:15 am – 5:00 pm</span></h2>
+<p><a href="#">Read more about this event +</a></p>
+</div>
+</div>
+<!--Event2 End-->
+
+<!--Event3 Start-->
+<div class="event-cal-list" style="background:none;">
+<div class="event-cal-image"> <span>Sep <br />10</span></div>
+<div class="event-cal-text">
+<h2>The point of using Lorem <span>9:15 am – 5:00 pm</span></h2>
+<p><a href="#">Read more about this event +</a></p>
+</div>
+</div>
+<!--Event2 End-->
+
+<div class="view-inner"><a href="#"><img src="images/view.png" width="158" height="37" alt="" /></a></div>
+</div>
+
+<!--Campus Event Calender Part End-->
+
+
+<!--Campus News Part Start-->
+<div class="cam-news">
+<h1>Campus News <img src="images/rss.png" width="17" height="17" alt="" class="rss" /></h1>
+<h2><img src="images/news-image.png" width="209" height="105" alt="" /></h2>
+<h3>There are many variations</h3>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...<a href="#">Read More +</a></p>
+</div>
+<!--Campus News Part End-->
+
+</div>
+<div class="sidebar-center"><img src="images/sitebar-bottom.png" width="269" height="20" alt="" /></div>
+
+</div>
+
+</div>
+<!--Sidebar Part End-->
+
+
+</div>
+
+
+
+
+
+
+</div>
+<!--Content End-->
+
+
+
+</div>
+
+<!--Footer Start-->
+<div id="footer">
+
+<div class="footer-top">
+<div class="footer-top-inner">
+
+<div class="footer-menu">
+
+<!--Footer Menu1 Start-->
+
+<div class="general">
+<h1>General info</h1>
+<ul>
+<li><a href="#">Visit</a></li>
+<li><a href="#">Maps</a></li>
+<li><a href="#">History </a></li>
+<li><a href="#">Diversity</a></li>
+<li><a href="#">Administration</a></li>
+<li><a href="#">Accreditation Status</a></li>
+</ul>
+</div>
+
+<!--Footer Menu1 End-->
+
+<!--Footer Menu2 Start-->
+<div class="university">
+<h1>Wieldstrem University</h1>
+<ul>
+<li><a href="#">Blackboard</a></li>
+<li><a href="#">Calendars</a></li>
+<li><a href="#">Class Schedule </a></li>
+<li><a href="#">Colonel's Compass</a></li>
+<li><a href="#">Green Initiatives</a></li>
+<li><a href="#">Faculty/Staff Email</a></li>
+</ul>
+</div>
+<!--Footer Menu2 End-->
+
+<!--Footer Menu3 Start-->
+<div class="quick">
+<h1>Quick Link</h1>
+<ul>
+<li><a href="#">Colleges &amp; Departments</a></li>
+<li><a href="#">Community Education</a></li>
+<li><a href="#">Conferencing &amp; Events </a></li>
+<li><a href="#">Employment &amp; Benefits</a></li>
+<li><a href="#">Financial Aid</a></li>
+<li><a href="#">Information Technology</a></li>
+</ul>
+</div>
+<!--Footer Menu3 End-->
+
+<!--Footer About Part Start-->
+<div class="about">
+<h1>About Wieldstrem University</h1>
+<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<a href="#">Read More +</a></p>
+</div>
+<!--Footer About Part End-->
+
+</div>
+
+<div class="footer-bottom">
+
+<!--Copyright Part Start-->
+<div class="footer-copy">Copyright &copy; 2012 Wieldstrem University. All Rights Reserved.<br />Wieldstrem University, Strem Valley , Stoviana 258963.<br />
+<b>Call :  1800-895-985 <a href="#">|</a> Fax  :  859 582 6975 <a href="#">|</a> Email  :  info@wieldstremuniversity.com</b>
+</div>
+<!--Copyright Part End-->
+
+<!--Footer logo Part Start-->
+<div class="footer-logo"><img src="images/footer-logo.png" width="262" height="57" alt="" /></div>
+<!--Footer logo Part End-->
+
+</div>
+
+</div>
+</div>
+
+
+</div>
+<!--Footer End-->
+
+</div>
+<div id="backtotop"><a href="#"></a></div>
+<!--Wrapper End-->
+
+<script type="text/javascript">
+var main_menu=new main_menu.dd("main_menu");
+main_menu.init("main_menu","menuhover");
+</script>
 </body>
+
 
 </html>
